@@ -25,7 +25,6 @@ app.use(function(req, res, next) {
   next(err);
 });
 
-
 app.listen(3000, () => {
   console.log('The server is listening on http://localhost:3000');
 })
