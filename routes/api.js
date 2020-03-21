@@ -10,6 +10,7 @@ const bodyParserJson = bodyParser.json();
 const fs = require('fs');
 
 let data = require('../data/data');
+const urlencodedParser = bodyParser.urlencoded({extended: false});
 
 router.get('/', (req, res) => {
   res.send(data);
@@ -25,22 +26,28 @@ router.delete('/delete/:id', (req, res) => {
   res.send('obnulil');
 });
 
-router.post('/add',bodyParserJson, (req, res) => {
-  // let biggestId = -1;
+router.post('/add', bodyParserJson, (req, res) => {
+  let biggestId = -1;
   // data.forEach((item) => {
   //   let itemId =  Number(item.id);
   //   if (data.length && biggestId < itemId) {
   //     biggestId = itemId;
   //   }
-    res.send(req.body.name)
-  //   data.push = {   
-  //     number: biggestId,
-  //     name: req.body.name,
-  //     dateOfCreation: req.body.date,
-  //     listOfParticipants: req.body.listOfParticipants,
-  //     description: req.body.description
-  // }
-  
+  const name =  req.body.name
+  console.log('request');
+  console.log(req);
+    res.send('name' + name)
+    console.log(name)
+    console.log(req.name)
+    
+    data.push = {   
+      number: biggestId,
+      name: req.body.name,
+      dateOfCreation: new Date().getUTCDate(),
+      listOfParticipants: req.body.participants,
+      description: req.body.description
+  }
+  console.log(data)
 
 });
 
